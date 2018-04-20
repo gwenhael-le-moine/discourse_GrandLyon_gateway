@@ -1,0 +1,6 @@
+#!/bin/sh
+
+GRANDLYON_GATEWAY_KEY="secret key" \
+                     GRANDLYON_LOGIN_URL="login url" \
+                     GRANDLYON_USERINFO_URL="user infos url" \
+                     ./app

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Passerelle SSO Grand Lyon</title>
+
+    <style>
+      form {
+      width: 256px;
+      margin: 20% auto 0;
+      line-height: 3;
+      color: #16161d;
+      background-color: #ececed;
+      border: 2px solid red;
+      font-family: sans-serif;
+      padding: 12px;
+      }
+      form input {
+      width: 100%;
+      border: 1px solid #333;
+      padding: 6px 0;
+      }
+      form input[type=submit] {
+      background-color: red;
+      color: #fff;
+      }
+      form #error {
+      color: red;
+      font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+
+    <form method="post" action="/login" accept-charset="utf-8">
+      <span id="error">
+        <%= error_message %>
+      </span>
+
+      <input name="login" id="login" placeholder="identifiant" type="text" />
+
+      <input name="password" id="password" placeholder="mot de passe" type="password" />
+
+      <input type="submit" value="Valider" />
+    </form>
+
+  </body>
+</html>

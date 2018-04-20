@@ -1,0 +1,18 @@
+version: 1.0
+shards:
+  crest:
+    github: mamantoha/crest
+    version: 0.9.10
+
+  kemal:
+    github: kemalcr/kemal
+    commit: 88b4737500750068cc4102f341b45d621e4adef8
+
+  kilt:
+    github: jeromegn/kilt
+    version: 0.4.0
+
+  radix:
+    github: luislavena/radix
+    version: 0.3.8
+
