@@ -5,47 +5,78 @@
     <title>Passerelle SSO Grand Lyon</title>
 
     <style>
-      form {
-      width: 256px;
-      margin: 20% auto 0;
-      line-height: 3;
-      color: #16161d;
-      background-color: #ececed;
-      border: 2px solid red;
+      body {
+      background: #ececec;
       font-family: sans-serif;
-      padding: 12px;
       }
-      form input {
-      width: 100%;
-      border: 1px solid #333;
-      padding: 6px 0;
+      form {
+      position: relative;
+      width: 430px;
+      height: 141px;
+      margin: auto;
+      padding: 1px;
+      background: #423143;
+      margin-top: 100px;
       }
-      form input[type=submit] {
-      background-color: red;
+      input[type=submit] {
+      border: 0;
+      background: red;
+      font-size: 22px;
+      padding: 0;
       color: #fff;
-      }
-      form #error {
-      color: red;
       font-weight: bold;
+      line-height: 1;
+      height: 40px;
+      width: 160px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      }
+      form input[type=text],form input[type=password] {
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      box-shadow: 0.1px 0 2px #6c5B6d;
+      width: 380px;
+      height: 32px;
+      margin: 15px 15px;
+      border: 0;
+      border-radius: 2px;
+      outline: 0;
+      display: block;
+      font-size: 18px;
+      }
+      form input[type=password]{
+      width: 380px;
+      height: 32px;
+      margin: -5px 15px;
+      }
+
+      input{padding-left: 16px;}
+
+      /* placeholder */
+      : : -webkit-input-placeholder {
+      -webkit-font-smoothing: antialiased;
+      color: #999;
+      font-size: 16px;
+      }
+      : -moz-input-placeholder {
+      color: #999;
+      font-size: 16px;
       }
     </style>
   </head>
   <body>
 
-    <form method="post" action="/login" accept-charset="utf-8">
-      <span id="error">
-        <%= error_message %>
-      </span>
 
-      <input name="login" id="login" placeholder="identifiant" type="text" />
+    <form id="form" name="form" method="post" action="/login" accept-charset="utf-8">
+      <input type="text" name="login" placeholder="identifiant" required/>
 
-      <input name="password" id="password" placeholder="mot de passe" type="password" />
+      <input type="password" name="password" placeholder="mot de passe" required />
 
-      <input name="nonce" id="nonce" type="hidden" value="<%= nonce %>"/>
+      <input name="nonce" type="hidden" value="<%= nonce %>"/>
+      <input name="return_sso_url" type="hidden" value="<%= return_sso_url %>"/>
 
-      <input name="return_sso_url" id="return_sso_url" type="hidden" value="<%= return_sso_url %>"/>
-
-      <input type="submit" value="Valider" />
+      <input type="submit" name="submit" value="se connecter"/>
     </form>
 
   </body>
