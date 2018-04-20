@@ -41,6 +41,10 @@
 
       <input name="password" id="password" placeholder="mot de passe" type="password" />
 
+      <input name="nonce" id="nonce" type="hidden" value="<%= nonce %>"/>
+
+      <input name="return_sso_url" id="return_sso_url" type="hidden" value="<%= return_sso_url %>"/>
+
       <input type="submit" value="Valider" />
     </form>
 
