@@ -78,7 +78,7 @@ post "/login" do |env|
                                                                  "external_id" => URI.escape( user_info["email"].to_s.split("@").first ),
                                                                  "username" => URI.escape( user_info["email"].to_s.split("@").first ),
                                                                  "email" => URI.escape( user_info["email"].to_s ),
-                                                                 "name" => URI.escape( "#{user_info["given_name"]}#{user_info["family_name"]}" ) } ) )
+                                                                 "name" => URI.escape( "#{user_info["given_name"]} #{user_info["family_name"]}" ) } ) )
     discourse_payload_signature = sign_discourse_payload( discourse_payload, DISCOURSE_SSO_KEY )
 
     env.redirect "#{ URI.unescape( env.params.body["return_sso_url"] ) }?sso=#{discourse_payload}&sig=#{discourse_payload_signature}"
