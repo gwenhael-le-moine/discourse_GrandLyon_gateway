@@ -81,8 +81,6 @@ post "/login" do |env|
                                                                  "name" => "#{user_info["given_name"]}#{user_info["family_name"]}" } ) )
     discourse_payload_signature = sign_discourse_payload( discourse_payload, DISCOURSE_SSO_KEY )
 
-    puts " # redirect"
-    puts "#{ URI.unescape( env.params.body["return_sso_url"] ) }?sso=#{discourse_payload}&sig=#{discourse_payload_signature}"
     env.redirect "#{ URI.unescape( env.params.body["return_sso_url"] ) }?sso=#{discourse_payload}&sig=#{discourse_payload_signature}"
   rescue Crest::BadRequest
     error_message = "Erreur lors de l'authentification."
