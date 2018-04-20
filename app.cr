@@ -75,10 +75,10 @@ post "/login" do |env|
     user_info = JSON.parse( response_info.body )
 
     discourse_payload = Base64.strict_encode( hash_to_payload( { "nonce" => env.params.body["nonce"],
-                                                                 "extermal_id" => user_info["email"],
-                                                                 "username" => user_info["email"],
-                                                                 "email" => user_info["email"],
-                                                                 "name" => "#{user_info["given_name"]}#{user_info["family_name"]}" } ) )
+                                                                 "external_id" => URI.escape( user_info["email"].to_s.split("@").first ),
+                                                                 "username" => URI.escape( user_info["email"].to_s.split("@").first ),
+                                                                 "email" => URI.escape( user_info["email"].to_s ),
+                                                                 "name" => URI.escape( "#{user_info["given_name"]}#{user_info["family_name"]}" ) } ) )
     discourse_payload_signature = sign_discourse_payload( discourse_payload, DISCOURSE_SSO_KEY )
 
     env.redirect "#{ URI.unescape( env.params.body["return_sso_url"] ) }?sso=#{discourse_payload}&sig=#{discourse_payload_signature}"
