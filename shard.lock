@@ -2,11 +2,11 @@ version: 1.0
 shards:
   crest:
     github: mamantoha/crest
-    version: 0.9.10
+    version: 0.12.0
 
   kemal:
     github: kemalcr/kemal
-    commit: 88b4737500750068cc4102f341b45d621e4adef8
+    version: 0.23.0
 
   kilt:
     github: jeromegn/kilt
