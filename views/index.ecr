@@ -67,6 +67,9 @@
   </head>
   <body>
 
+    <% if error_message != "" %>
+    <p style="background: #f00; color: #fff; font-size: 32px; padding: 5px; text-align: center;"><%=error_message %></p>
+    <% end %>
 
     <form id="form" name="form" method="post" action="/login" accept-charset="utf-8">
       <input type="text" name="login" placeholder="identifiant" required/>

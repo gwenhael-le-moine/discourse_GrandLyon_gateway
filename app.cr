@@ -37,19 +37,19 @@ end
 
 # kemal routes below
 get "/" do |env|
-  sig = env.params.query["sig"]
-  payload = env.params.query["sso"]
+  sig = env.params.query["sig"]?
+  payload = env.params.query["sso"]?
 
-  if check_discourse_payload_signature( payload, sig, DISCOURSE_SSO_KEY )
+  error_message = "Appel invalide de la part de Discourse."
+  nonce = "error"
+  return_sso_url = "error"
+
+  if !sig.nil? && !payload.nil? && check_discourse_payload_signature( payload, sig, DISCOURSE_SSO_KEY )
     payload = payload_to_hash( Base64.decode_string( payload ) )
 
     error_message = ""
     nonce = payload["nonce"]
     return_sso_url = payload["return_sso_url"]
-  else
-    error_message = "Appel invalide de la part de Discourse."
-    nonce = "error"
-    return_sso_url = "error"
   end
 
   env.response.content_type = "text/html"
