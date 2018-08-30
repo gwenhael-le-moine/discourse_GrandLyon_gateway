@@ -1,7 +1,7 @@
 all: app
 
 app: app.cr views/index.ecr
-	crystal build $<
+	crystal build --static $<
 
 pull-deps:
 	crystal deps install
