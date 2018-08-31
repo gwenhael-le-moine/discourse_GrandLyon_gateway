@@ -1,0 +1,14 @@
+[Unit]
+Description=Discourse SSO provider for Métropole du Grand Lyon
+After=network.target local-fs.target
+
+[Service]
+WorkingDirectory=/tmp
+ExecStart=/usr/local/bin/discourse_GrandLyon_gateway "dummy_sso_key" "dummy_GL_dateway_key" "login_url" "userinfo_url"
+KillMode=control-group
+Restart=always
+User=erasme
+Group=erasme
+
+[Install]
+WantedBy=multi-user.target
