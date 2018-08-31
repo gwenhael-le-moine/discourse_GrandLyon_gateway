@@ -61,13 +61,14 @@ post "/login" do |env|
     response_auth = Crest.post( LOGIN_URL,
                                 headers: { "Content-Type" => "application/x-www-form-urlencoded",
                                            "Authorization" => "Basic #{GATEWAY_KEY}" },
-                                payload: hash_to_payload( { "scope" => "openid",
-                                                            "grant_type" => "password",
-                                                            "username" => env.params.body["login"],
-                                                            "password" => env.params.body["password"] } ),
+                                form: hash_to_payload( { "scope" => "openid",
+                                                         "grant_type" => "password",
+                                                         "username" => env.params.body["login"],
+                                                         "password" => env.params.body["password"] } ),
                                 logging: true )
 
     auth = JSON.parse( response_auth.body )
+
     response_info = Crest.get( USERINFO_URL,
                                headers: { "Authorization" => "Bearer #{auth["access_token"]}" },
                                logging: true )
