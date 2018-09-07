@@ -8,6 +8,7 @@
       body {
           background: #ececec;
           font-family: sans-serif;
+          text-align: center;
       }
       form {
           position: relative;
@@ -30,6 +31,7 @@
           bottom: 0;
           right: 0;
           padding: 5px 10px;
+          cursor: pointer;
       }
       form input[type=text],form input[type=password] {
           font-weight: 300;
@@ -72,6 +74,8 @@
     </style>
   </head>
   <body>
+
+    <img src="https://www.laclasse.com/sso/images/grandlyon-logo.svg" alt="Logo Métropole de Lyon" />
 
     <% if error_message != "" %>
     <p class="error"><%=error_message %></p>
