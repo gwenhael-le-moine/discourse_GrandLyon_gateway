@@ -1,7 +1,10 @@
 all: app
 
-app: app.cr views/index.ecr
-	crystal build --static $<
+app: app.cr views/index.ecr shard.lock shard.yml
+	crystal build app.cr
+
+# static: app.cr views/index.ecr shard.lock shard.yml
+#	crystal build --static app.cr --link-flags -L`pwd`/lib64
 
 pull-deps:
 	crystal deps install
