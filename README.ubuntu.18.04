@@ -1,0 +1,8 @@
+$ curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
+$ sudo -s
+# apt install crystal
+# apt install zlib1g-dev
+# apt install libssl1.0-dev
+# exit
+$ make pull-deps
+$ make
