@@ -36,7 +36,7 @@ def check_discourse_payload_signature( payload : String, signature : String, key
 end
 
 # kemal routes below
-get "/" do |env|
+get "/auth/" do |env|
   sig = env.params.query["sig"]?
   payload = env.params.query["sso"]?
 
@@ -56,7 +56,7 @@ get "/" do |env|
   render( "views/index.ecr" )
 end
 
-post "/login" do |env|
+post "/auth/login" do |env|
   begin
     response_auth = Crest.post( LOGIN_URL,
                                 headers: { "Content-Type" => "application/x-www-form-urlencoded",
