@@ -7,7 +7,7 @@ app: app.cr views/index.ecr shard.lock shard.yml
 #	crystal build --static app.cr --link-flags -L`pwd`/lib64
 
 pull-deps:
-	crystal deps install
+	shards install
 
 clean:
 	-rm app
